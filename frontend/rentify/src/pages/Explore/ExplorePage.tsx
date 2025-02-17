@@ -18,11 +18,11 @@ export function ExplorePage() {
   const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
-    getFilteredProperties(searchParams.toString());
+    getFilteredProperties(searchParams);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
 
-  const getFilteredProperties = async (queryParams: string) => {
+  const getFilteredProperties = async (queryParams: URLSearchParams) => {
     setWaitForResponse(
       <Box
         sx={{
@@ -67,10 +67,9 @@ export function ExplorePage() {
 
   const onSubmit = (data: FieldValues) => {
     let queryParams = "?";
-
     for (const [key, value] of Object.entries(data)) {
       if (key.startsWith("room") && value) {
-        queryParams += `rooms=${key.slice(4)}&`;
+        queryParams += `${key}=true&`;
         data[key] = undefined;
       } else if (value === "" || !value) {
         data[key] = undefined;

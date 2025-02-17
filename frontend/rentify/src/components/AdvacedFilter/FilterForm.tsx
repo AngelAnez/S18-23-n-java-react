@@ -178,7 +178,7 @@ function FilterForm({ onSubmit, closeFilter }: Props) {
             control={control}
             options={[
               { label: "Seleccione", value: "" },
-              { label: "Apartamento", value: "APARMENT" },
+              { label: "Apartamento", value: "APARTMENT" },
               { label: "Casa", value: "HOUSE" },
               { label: "Casa Vacacional", value: "VACATION_HOME" },
               { label: "Oficina Comercial", value: "COMMERCIAL_OFFICE" },

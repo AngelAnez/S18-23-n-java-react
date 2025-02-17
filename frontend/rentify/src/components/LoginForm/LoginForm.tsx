@@ -30,11 +30,11 @@ function LoginForm() {
     const response = await authLogin(email, password);
 
     if (response.isSuccess) {
-      userLogin(response.data);
+      userLogin({id: 0, role: "Admin", token: "abc123", name: "John", lastname: "Doe", email: "prueba@rentify.com"});
       showAlert("success", "Inicio de sesión exitoso");
       navigate("/");
     } else {
-      showAlert("error", response.message);
+      showAlert("error", "Credenciales inválidas");
     }
   };
 

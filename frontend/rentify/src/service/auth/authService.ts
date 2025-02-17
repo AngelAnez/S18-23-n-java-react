@@ -1,5 +1,6 @@
 import axios, { isAxiosError } from "axios";
 import { getCookie } from "../cookies/cookiesService";
+import { OWNERS } from "../../data/db";
 
 export const backend = axios.create({
   baseURL: "https://s18-23-n-java-react.onrender.com/api/v1",
@@ -14,8 +15,8 @@ export const authHeaders = () => {
 
 export const authLogin = async (email: string, password: string) => {
   try {
-    const response = await backend.post("/auth/login", { email, password });
-    return response.data;
+    const response = email === "prueba@rentify.com" && password === "prueba123"
+    return response && {isSuccess: true };
   } catch (error) {
     if (axios.isAxiosError(error)) return error.response?.data;
   }
@@ -23,12 +24,7 @@ export const authLogin = async (email: string, password: string) => {
 
 export const authLogout = async () => {
   try {
-    const response = await backend.post(
-      "/auth/logout",
-      {},
-      { headers: authHeaders() }
-    );
-    return response.data;
+    return {isSuccess: true };
   } catch (error) {
     if (axios.isAxiosError(error)) return error.response?.data;
   }
@@ -43,12 +39,10 @@ export const authRecoveryPassword = async (email: string) => {
   }
 };
 
-export const getUserAuth = async () => {
+export const getUserAuth = async (id: number) => {
   try {
-    const response = await backend.get(`/user-profile`, {
-      headers: authHeaders(),
-    });
-    return response.data;
+    const response = OWNERS.find(user => user.id === id)
+    return {isSuccess: true, data: response};
   } catch (error) {
     if (isAxiosError(error)) {
       return error.response?.data;

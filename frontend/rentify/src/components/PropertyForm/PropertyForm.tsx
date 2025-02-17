@@ -2,7 +2,7 @@ import { Box, Container, Paper, Typography } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { AlertContext, AuthContext } from "../../context";
-import uploadImages from "../../service/images/cloudinaryService";
+/* import uploadImages from "../../service/images/cloudinaryService"; */
 import {
   createProperty,
   updateProperty,
@@ -140,11 +140,11 @@ const PropertyForm = ({ modifyProperty, setIsLoadingForm }: Props) => {
         }
       });
       if (imageFiles.length > 0) {
-        const imagesResponse = await uploadImages(imageFiles);
+/*         const imagesResponse = await uploadImages(imageFiles);
         const imagesUrl = imagesResponse.map((image) => {
           return { url: image, type: "IMAGE" };
-        });
-        data.multimedia = [...data.multimedia, ...imagesUrl];
+        }); */
+        data.multimedia = [...data.multimedia];
       }
 
       if (!modifyProperty) {

@@ -69,7 +69,7 @@ export function ProfilePage() {
   useEffect(() => {
     const getUserInfo = async () => {
       try {
-        const userResponse = await getUserAuth();
+        const userResponse = await getUserAuth(user?.id ?? 0);
         if (userResponse.isSuccess && user) {
           const propertyResponse = await getPropertiesByUserId(user.id);
           setFullUser(userResponse.data);
@@ -109,11 +109,8 @@ export function ProfilePage() {
   const handleDeleteProperty = async (id: number) => {
     const response = await deleteProperty(id);
     if (response.status === 204) {
-      setIsLoading(true)
-      setProperties([])
-      setProperties(properties => properties?.filter(property => property.id === id))
+      setProperties((properties) => properties?.filter(property => property.id !== id))
       showAlert("success", "La propiedad ha sido eliminada exitosamente")
-      setIsLoading(false)
     } else{
       showAlert("error", "Ha ocurrido un error al eliminar la propiedad")
     }

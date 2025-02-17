@@ -29,7 +29,7 @@ export function PropertyInfoPage() {
       const propertyResponse: Property = await getPropertyById(propertyId);
       const ownerResponse = await getOwnerById(propertyResponse.ownerId);
       setProperty(propertyResponse);
-      setOwner(ownerResponse.data as Owner);
+      setOwner(ownerResponse as Owner);
     } catch (error) {
       if (error)
         showAlert("error", "Ha ocurrido un error al mostrar esta propiedad");

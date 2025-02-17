@@ -76,7 +76,7 @@ const PropertyList: React.FC<PropertyListProps> = ({ properties }) => {
         >
           <MenuItem value="">Todos</MenuItem>
           <MenuItem value="HOUSE">Casa</MenuItem>
-          <MenuItem value="BUILDING">Departamento</MenuItem>
+          <MenuItem value="APARTMENT">Departamento</MenuItem>
           <MenuItem value="COMMERCIAL_OFFICE">Oficina</MenuItem>
           <MenuItem value="VACATION_HOME">Casa Vacacional</MenuItem>
           <MenuItem value="FARM">Finca</MenuItem>
